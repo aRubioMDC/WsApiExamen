@@ -1,0 +1,39 @@
+USE BdiExamen
+GO
+
+CREATE PROCEDURE spActualizar
+    @Id INT,
+    @Nombre NVARCHAR(255),
+    @Descripcion NVARCHAR(255)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    BEGIN TRY
+        UPDATE tblexamen
+        SET Nombre = @Nombre,
+            Descripcion = @Descripcion
+        WHERE idExamen = @Id;
+
+        IF @@ROWCOUNT > 0
+        BEGIN
+            SELECT 0 AS CodigoRetorno, 'Registro actualizado satisfactoriamente' AS Descripcion;
+        END
+        ELSE
+        BEGIN
+            -- Devolver error si no se encontró el registro para actualizar
+            SELECT 1 AS CodigoRetorno, 'No se encontró el registro para actualizar' AS Descripcion;
+        END
+
+    END TRY
+    BEGIN CATCH
+        -- Devolver error
+        DECLARE @ErrorNumero INT, @ErrorDescripcion NVARCHAR(4000);
+        SELECT @ErrorNumero = ERROR_NUMBER(), @ErrorDescripcion = ERROR_MESSAGE();
+        SELECT @ErrorNumero AS CodigoRetorno, @ErrorDescripcion AS Descripcion;
+    END CATCH
+END
+
+--Ejemplo de ejecucion
+--EXEC spActualizar 3, 'TEST', 'TEST';
+--SELECT * FROM tblExamen;

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1706.8
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WsApiexamen", "WsApiexamen.csproj", "{9C6FFACC-3986-4DCE-8204-A3167CE924CE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9C6FFACC-3986-4DCE-8204-A3167CE924CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C6FFACC-3986-4DCE-8204-A3167CE924CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C6FFACC-3986-4DCE-8204-A3167CE924CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C6FFACC-3986-4DCE-8204-A3167CE924CE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D73DA5C7-F581-46B7-9573-1A2C43FD38DE}
+	EndGlobalSection
+EndGlobal

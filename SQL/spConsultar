@@ -1,0 +1,30 @@
+USE BdiExamen
+GO
+
+CREATE PROCEDURE spConsultar
+    @Nombre NVARCHAR(255) = NULL,
+    @Descripcion NVARCHAR(255) = NULL
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    BEGIN TRY
+    
+        SELECT idExamen, Nombre, Descripcion
+        FROM tblexamen
+        WHERE (@Nombre IS NULL OR Nombre LIKE '%' + @Nombre + '%')
+          AND (@Descripcion IS NULL OR Descripcion LIKE '%' + @Descripcion + '%');
+
+    END TRY
+    BEGIN CATCH
+        -- Devolver error
+        DECLARE @ErrorNumero INT, @ErrorDescripcion NVARCHAR(4000);
+        SELECT @ErrorNumero = ERROR_NUMBER(), @ErrorDescripcion = ERROR_MESSAGE();
+        SELECT @ErrorNumero AS CodigoRetorno, @ErrorDescripcion AS Descripcion;
+    END CATCH
+END
+
+--Ejemplo de ejecucion
+--EXEC spConsultar 'Test3','Test3';
+--EXEC spConsultar NULL,'Test2';
+--EXEC spConsultar 'Test1', NULL;
